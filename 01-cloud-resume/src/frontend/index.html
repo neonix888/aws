@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugh Nguyen - Cloud Resume</title>
+    <meta name="description" content="Cloud Resume Challenge - Hugh Nguyen, DevOps Engineer with 10+ years experience">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hugh Nguyen</h1>
+            <div class="contact-info">
+                <a href="mailto:hugh@pobox.com">hugh@pobox.com</a>
+                <span class="separator">|</span>
+                <a href="tel:+14159854844">(415) 985-4844</a>
+            </div>
+            <div class="visitor-counter">
+                <span id="visitor-count">Loading...</span> visitors
+            </div>
+        </header>
+
+        <main>
+            <section id="summary">
+                <h2>Platform Engineer</h2>
+                <p class="summary">
+                    Platform engineer with 10+ years designing CI/CD pipelines, implementing Infrastructure as Code,
+                    and advising development teams on DevOps best practices. I focus on building reliable, multi-stage
+                    pipelines with integrated testing, ensuring environmental consistency across Dev/QA/UAT/Prod, and
+                    making incremental improvements that deliver measurable results.
+                </p>
+            </section>
+
+            <section id="results">
+                <h2>Recent Results</h2>
+                <ul>
+                    <li>Standardized server build and patch flow with Ansible/Terraform; deployment time down ~40% and infra cost down ~25%</li>
+                    <li>Kept core Linux services at 99.99% uptime; production errors down ~40% by tightening CI/CD checks</li>
+                    <li>Provisioning time reduced ~70% across QA to Prod with idempotent automation</li>
+                    <li>Planned and executed phased migrations for 10k+ servers with documented rollback</li>
+                </ul>
+            </section>
+
+            <section id="experience">
+                <h2>Experience</h2>
+
+                <article class="job">
+                    <h3>Principal DevOps Architect</h3>
+                    <div class="job-meta">IT Conductor — San Jose, CA | Feb 2024 – Present</div>
+                    <ul>
+                        <li>Architect multi-stage CI/CD pipelines with automated testing, linting, and deployment gates</li>
+                        <li>Implement Infrastructure as Code using Terraform + Ansible, standardizing environment configurations</li>
+                        <li>Act as SME and advisor to development teams on pipeline optimization and deployment best practices</li>
+                    </ul>
+                </article>
+
+                <article class="job">
+                    <h3>Senior Consultant II, Cloud Engineering (Lead Architect)</h3>
+                    <div class="job-meta">Deloitte — Atlanta, GA | Nov 2019 – May 2023</div>
+                    <ul>
+                        <li>Advised enterprise clients on CI/CD pipeline design, IaC strategy, and environmental consistency for large-scale migrations (10k+ servers)</li>
+                        <li>Built Ansible roles and Terraform modules ensuring compliance and repeatability across environments</li>
+                        <li>Coordinated onshore/offshore teams; owned incident response and rollback procedures</li>
+                    </ul>
+                </article>
+
+                <article class="job">
+                    <h3>Lead Sr. DevOps Engineer</h3>
+                    <div class="job-meta">TaskRabbit — San Francisco, CA | Jun 2018 – Nov 2019</div>
+                    <ul>
+                        <li>Owned CI/CD pipeline reliability with multi-stage builds; maintained 99.99% uptime</li>
+                        <li>Automated infrastructure with Terraform/Ansible/Jenkins, cutting deployment time by 50%</li>
+                    </ul>
+                </article>
+
+                <article class="job">
+                    <h3>Lead DevSecOps Infrastructure Engineer</h3>
+                    <div class="job-meta">Aera Technology — Mountain View, CA | Jun 2016 – Jun 2018</div>
+                    <ul>
+                        <li>Built CI/CD infrastructure from the ground up; designed multi-stage Jenkins pipelines</li>
+                        <li>Implemented Infrastructure as Code across QA, Staging, UAT, and Production; reduced provisioning time 70%</li>
+                        <li>Drove audit readiness (HIPAA, SOC 2 Type 1) with policy-as-code</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="certifications">
+                <h2>Certifications</h2>
+                <ul class="cert-list">
+                    <li>AWS Solutions Architect Associate</li>
+                    <li>AWS Developer Associate</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                This resume is hosted on AWS using S3, CloudFront, Lambda, API Gateway, and DynamoDB.
+                <br>
+                <a href="https://github.com/neonix888/aws" target="_blank">View the source code on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/counter.js"></script>
+</body>
+</html>

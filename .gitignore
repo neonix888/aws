@@ -1,0 +1,55 @@
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/.terraform.lock.hcl
+**/*.tfplan
+**/crash.log
+**/override.tf
+**/override.tf.json
+**/*_override.tf
+**/*_override.tf.json
+
+# Lambda packages
+**/*.zip
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+**/.venv/
+**/venv/
+**/ENV/
+
+# IDE
+.vscode/
+.idea/
+**/*.swp
+**/*.swo
+**/*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (never commit)
+**/*.pem
+**/*.key
+**/.env
+**/.env.*
+**/secrets.json
+**/credentials.json
+
+# Logs
+**/*.log
+**/logs/
+
+# Node (if used)
+**/node_modules/
+
+# Build artifacts
+**/dist/
+**/build/
