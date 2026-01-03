@@ -23,7 +23,7 @@
 │   │   ├── index.html           # Main resume page
 │   │   └── error.html           # 404 error page
 │   │
-│   └── lambda/                  # Lambda function code
+│   └── functions/               # Lambda function code
 │       ├── counter.py           # Visitor counter function
 │       └── requirements.txt     # Python dependencies
 │
@@ -91,7 +91,7 @@ Static website files deployed to S3.
 - `css/styles.css`: Responsive stylesheet with CSS variables
 - `js/counter.js`: Visitor counter API integration
 
-### `src/lambda/`
+### `src/functions/`
 
 Python code for AWS Lambda functions.
 

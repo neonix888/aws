@@ -53,7 +53,7 @@ A serverless resume website hosted on AWS, demonstrating core cloud services and
 │   │   ├── error.html
 │   │   ├── css/styles.css
 │   │   └── js/counter.js
-│   └── lambda/                 # Lambda function code
+│   └── functions/              # Lambda function code
 │       ├── counter.py
 │       └── requirements.txt
 ├── tests/                      # Unit tests
@@ -81,7 +81,7 @@ cd ~/projects/etcbin.io/01-cloud-resume
 ### 2. Package Lambda function
 
 ```bash
-cd src/lambda
+cd src/functions
 zip -r ../../terraform/modules/lambda-counter/lambda.zip counter.py
 cd ../..
 ```

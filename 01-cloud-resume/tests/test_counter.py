@@ -56,10 +56,10 @@ def dynamodb_table(aws_credentials):
 def test_get_counter(dynamodb_table):
     """Test getting the current visitor count."""
     # Import handler after mocking
-    from src.lambda.counter import get_counter
+    from src.functions.counter import get_counter
 
     # Patch the table reference
-    with patch('src.lambda.counter.table', dynamodb_table):
+    with patch('src.functions.counter.table', dynamodb_table):
         count = get_counter()
         assert count == 0
 
@@ -67,9 +67,9 @@ def test_get_counter(dynamodb_table):
 @mock_aws
 def test_increment_counter(dynamodb_table):
     """Test incrementing the visitor count."""
-    from src.lambda.counter import increment_counter
+    from src.functions.counter import increment_counter
 
-    with patch('src.lambda.counter.table', dynamodb_table):
+    with patch('src.functions.counter.table', dynamodb_table):
         # First increment
         count = increment_counter()
         assert count == 1
@@ -82,9 +82,9 @@ def test_increment_counter(dynamodb_table):
 @mock_aws
 def test_handler_get(dynamodb_table):
     """Test the Lambda handler with GET request."""
-    from src.lambda.counter import handler
+    from src.functions.counter import handler
 
-    with patch('src.lambda.counter.table', dynamodb_table):
+    with patch('src.functions.counter.table', dynamodb_table):
         event = {
             'requestContext': {
                 'http': {
@@ -103,9 +103,9 @@ def test_handler_get(dynamodb_table):
 @mock_aws
 def test_handler_post(dynamodb_table):
     """Test the Lambda handler with POST request."""
-    from src.lambda.counter import handler
+    from src.functions.counter import handler
 
-    with patch('src.lambda.counter.table', dynamodb_table):
+    with patch('src.functions.counter.table', dynamodb_table):
         event = {
             'requestContext': {
                 'http': {
@@ -123,7 +123,7 @@ def test_handler_post(dynamodb_table):
 
 def test_cors_headers():
     """Test that CORS headers are present in response."""
-    from src.lambda.counter import handler
+    from src.functions.counter import handler
 
     with mock_aws():
         # Create table for this test
@@ -137,7 +137,7 @@ def test_cors_headers():
         table.meta.client.get_waiter('table_exists').wait(TableName='test-visitors')
         table.put_item(Item={'id': 'visitor_count', 'count': 0})
 
-        with patch('src.lambda.counter.table', table):
+        with patch('src.functions.counter.table', table):
             event = {'requestContext': {'http': {'method': 'GET'}}}
             response = handler(event, None)
 

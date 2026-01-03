@@ -36,6 +36,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - CloudFront Origin Access Control (OAC)
 - Least-privilege IAM roles
 
+### Fixed
+- **Fix #001**: Renamed `src/lambda/` to `src/functions/` to avoid Python reserved keyword conflict
+  - `lambda` is a reserved keyword in Python, causing syntax errors during test imports
+  - Added `__init__.py` files for proper Python package structure
+  - Updated all references in tests, CI/CD workflow, and documentation
+  - See `docs/fixes/001-lambda-reserved-keyword.md` for full details
+
 ---
 
 ## Version History
@@ -68,10 +75,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Upcoming
 
 ### Next Session
+- [x] Initialize git repository (dev branch)
+- [x] Run Python unit tests - PASSED
 - [ ] Validate Terraform configuration
 - [ ] Deploy Project #1 to AWS
 - [ ] Test end-to-end functionality
-- [ ] Initialize git repository
 - [ ] Push to GitHub (after approval)
 
 ### Future

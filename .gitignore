@@ -2,7 +2,7 @@
 **/.terraform/
 **/*.tfstate
 **/*.tfstate.*
-**/.terraform.lock.hcl
+# Note: .terraform.lock.hcl should be committed for reproducible builds
 **/*.tfplan
 **/crash.log
 **/override.tf

@@ -32,8 +32,7 @@ jobs:
 
       - name: Run Lambda tests
         run: |
-          cd tests
-          python -m pytest test_counter.py -v
+          python -m pytest tests/test_counter.py -v
 
   # Terraform plan (runs on PRs and pushes)
   terraform-plan:
@@ -105,7 +104,7 @@ jobs:
 
       - name: Package Lambda function
         run: |
-          cd src/lambda
+          cd src/functions
           zip -r ../../terraform/modules/lambda-counter/lambda.zip counter.py
 
       - name: Terraform Init
