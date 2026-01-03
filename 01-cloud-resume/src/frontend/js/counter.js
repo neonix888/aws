@@ -8,8 +8,8 @@
 (function() {
     'use strict';
 
-    // API endpoint - will be replaced during deployment
-    const API_ENDPOINT = 'API_ENDPOINT_PLACEHOLDER';
+    // API endpoint
+    const API_ENDPOINT = 'https://mnsbgvacma.execute-api.us-east-1.amazonaws.com';
 
     /**
      * Update the visitor count display
