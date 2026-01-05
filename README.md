@@ -10,7 +10,7 @@
 
 | # | Project | Directory | Status |
 |---|---------|-----------|--------|
-| 1 | Cloud Resume Challenge | `01-cloud-resume/` | Not Started |
+| 1 | Cloud Resume Challenge | `01-cloud-resume/` | DEPLOYED |
 | 2 | Backup & Archival System | `02-backup-archival/` | Not Started |
 | 3 | Three-Tier Web Architecture | `03-three-tier/` | Not Started |
 | 4 | CI/CD Pipeline | `04-cicd-pipeline/` | Not Started |

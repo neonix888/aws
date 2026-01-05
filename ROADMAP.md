@@ -14,8 +14,9 @@ This roadmap tracks the development of 10 production-grade AWS projects designed
 ## Phase 1: Foundation (Weeks 1-4)
 
 ### Project #1: Cloud Resume Challenge
-**Status**: In Progress
+**Status**: DEPLOYED
 **Directory**: `01-cloud-resume/`
+**Live URL**: https://d3bfu5f6po0eh.cloudfront.net
 
 - [x] Project scaffold created
 - [x] Terraform modules defined
@@ -23,9 +24,9 @@ This roadmap tracks the development of 10 production-grade AWS projects designed
 - [x] Frontend HTML/CSS/JS created
 - [x] GitHub Actions workflow defined
 - [x] Documentation created
-- [ ] Terraform validated
-- [ ] AWS resources deployed
-- [ ] End-to-end testing
+- [x] Terraform validated
+- [x] AWS resources deployed
+- [x] End-to-end testing
 - [ ] Blog post written
 
 **AWS Services**: S3, CloudFront, API Gateway, Lambda, DynamoDB
@@ -202,7 +203,7 @@ Reusable Terraform modules across projects:
 
 | Milestone | Target Date | Status |
 |-----------|-------------|--------|
-| Project #1 deployed | Week 1 | In Progress |
+| Project #1 deployed | Week 1 | COMPLETE |
 | Phase 1 complete (3 projects) | Week 4 | Not Started |
 | Phase 2 complete (1 project) | Week 8 | Not Started |
 | Phase 3 complete (3 projects) | Week 14 | Not Started |
