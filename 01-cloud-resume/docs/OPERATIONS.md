@@ -318,13 +318,34 @@ aws cloudfront list-invalidations --distribution-id ${DIST_ID}
 
 ## Destroy Infrastructure
 
+### S3 Bucket: force_destroy Enabled
+
+This project has `force_destroy = true` configured on the S3 bucket:
+
+```hcl
+# terraform/modules/s3-static-site/main.tf
+resource "aws_s3_bucket" "static_site" {
+  bucket        = var.bucket_name
+  force_destroy = true  # Deletes all objects/versions automatically on destroy
+  ...
+}
+```
+
+**What this means:**
+- `terraform destroy` will automatically delete all objects and versions in the bucket
+- No manual cleanup required before destroying
+- Safe for development/portfolio projects
+- For production with critical data, consider setting to `false` and backing up first
+
 ### Pre-Destroy Checklist
 
-- [ ] Backup any important data (visitor count, logs)
+- [ ] Backup any important data (visitor count, logs) - optional with force_destroy
 - [ ] Confirm no other services depend on these resources
 - [ ] Ensure you're destroying the correct environment
 
-### Backup Data Before Destroy
+### Backup Data Before Destroy (Optional)
+
+If you want to preserve data before destroying:
 
 ```bash
 cd ~/projects/etcbin.io/01-cloud-resume/terraform
@@ -339,27 +360,6 @@ aws logs tail "/aws/lambda/cloud-resume-counter" --since 30d > ~/lambda-logs-bac
 # Download S3 content
 BUCKET=$(terraform output -raw s3_bucket_name)
 aws s3 sync s3://${BUCKET}/ ~/s3-backup/
-```
-
-### Empty S3 Bucket
-
-S3 buckets must be empty before Terraform can destroy them:
-
-```bash
-BUCKET=$(terraform output -raw s3_bucket_name)
-
-# Delete all objects
-aws s3 rm s3://${BUCKET}/ --recursive
-
-# Delete all versions (if versioning enabled)
-aws s3api list-object-versions --bucket ${BUCKET} --output json | \
-  jq -r '.Versions[]? | "--key \"\(.Key)\" --version-id \(.VersionId)"' | \
-  xargs -L1 aws s3api delete-object --bucket ${BUCKET}
-
-# Delete all delete markers
-aws s3api list-object-versions --bucket ${BUCKET} --output json | \
-  jq -r '.DeleteMarkers[]? | "--key \"\(.Key)\" --version-id \(.VersionId)"' | \
-  xargs -L1 aws s3api delete-object --bucket ${BUCKET}
 ```
 
 ### Destroy Command
@@ -415,24 +415,20 @@ cd ~/projects/etcbin.io/01-cloud-resume/terraform
 
 echo "=== Cloud Resume Teardown ==="
 
-# Get bucket name before destroy
-BUCKET=$(terraform output -raw s3_bucket_name 2>/dev/null || echo "")
-
-if [ -n "$BUCKET" ]; then
-  echo "[1/3] Emptying S3 bucket..."
-  aws s3 rm s3://${BUCKET}/ --recursive
-fi
-
-echo "[2/3] Destroying Terraform resources..."
+# S3 bucket has force_destroy=true, so no manual emptying needed
+echo "[1/2] Destroying Terraform resources..."
 terraform destroy -auto-approve
 
-echo "[3/3] Cleaning up local files..."
+echo "[2/2] Cleaning up local files..."
 rm -rf .terraform/
 rm -f .terraform.lock.hcl terraform.tfstate* tfplan
 rm -f modules/lambda-counter/lambda.zip
 
 echo "=== Teardown Complete ==="
 ```
+
+> **Note**: The S3 bucket is configured with `force_destroy = true`, so Terraform
+> automatically deletes all objects and versions. No manual cleanup required.
 
 ---
 

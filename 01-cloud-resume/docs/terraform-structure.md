@@ -56,11 +56,18 @@ Orchestrates all child modules and defines:
 **Purpose**: Creates S3 bucket for static website hosting
 
 **Resources**:
-- `aws_s3_bucket` - Main bucket
+- `aws_s3_bucket` - Main bucket (`force_destroy = true` for clean teardown)
 - `aws_s3_bucket_public_access_block` - Block public access
 - `aws_s3_bucket_versioning` - Enable versioning
 - `aws_s3_bucket_server_side_encryption_configuration` - AES-256 encryption
 - `aws_s3_bucket_website_configuration` - Website settings
+
+**Key Configuration**:
+```hcl
+force_destroy = true  # Allows terraform destroy to delete bucket with all contents
+```
+> **Note**: This enables clean `terraform destroy` without manual bucket emptying.
+> For production with critical data, set to `false` and backup before destroying.
 
 **Inputs**:
 - `bucket_name` - Unique bucket name
