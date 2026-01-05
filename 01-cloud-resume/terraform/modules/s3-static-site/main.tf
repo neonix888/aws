@@ -1,7 +1,8 @@
 # S3 Bucket for Static Website Hosting
 
 resource "aws_s3_bucket" "static_site" {
-  bucket = var.bucket_name
+  bucket        = var.bucket_name
+  force_destroy = true  # Allows terraform destroy to delete bucket with contents
 
   tags = {
     Name        = var.bucket_name
